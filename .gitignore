@@ -1,0 +1,11 @@
+bin/
+*.class
+
+# IDEs
+.idea/
+*.iml
+.vscode/
+.settings/
+
+# macOS
+.DS_Store
