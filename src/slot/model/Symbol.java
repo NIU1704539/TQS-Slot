@@ -11,7 +11,7 @@ public enum Symbol {
     A,
     CHERRY,
     LEMON,
-    BLUBERRY,
+    BLUEBERRY,
     KIWI,
     MELON,
     WILD
