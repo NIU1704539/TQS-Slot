@@ -17,19 +17,14 @@ class PlayerTest {
     }
 
     @Test 
-    public void TestgetCredit()
+    public void TestPlayer() // this test covers the functions for getCredit and the default constructor
     {
         setUp();
-        AssertEquals(Player.getCredit(),0);
+        assertEquals(player.getCredit(),1000);
         
     }
 
-    @Test 
-    public void TestPlayer()
-    {
-        setUp();
-        AssertEquals(Player.getCredit(),0);
-    }
+    
 
 
 

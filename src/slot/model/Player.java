@@ -9,7 +9,7 @@ public class Player {
 
     public Player()
     {
-
+        credit = 1000;
     }
 
     public Player(int saldo)
@@ -19,7 +19,7 @@ public class Player {
 
     public int getCredit()
     {
-
+        return credit;
     }
 
     public void setCredit(int saldo)
