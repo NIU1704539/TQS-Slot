@@ -5,5 +5,14 @@ package slot.model;
  * Solo guarda los valores, no incluye métodos.
  */
 public enum Symbol {
-
+    J,
+    Q,
+    K,
+    A,
+    CHERRY,
+    LEMON,
+    BLUBERRY,
+    KIWI,
+    MELON,
+    WILD
 }
