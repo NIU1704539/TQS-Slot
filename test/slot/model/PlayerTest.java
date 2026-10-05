@@ -21,7 +21,13 @@ class PlayerTest {
     {
         setUp();
         assertEquals(player.getCredit(),1000);
-        
+    }
+
+    @Test 
+    public void TestPlayer(int credit)
+    {
+        player = new Player(500);
+        assertEquals(player.getCredit(), 500);
     }
 
     
