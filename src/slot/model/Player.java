@@ -12,9 +12,9 @@ public class Player {
         credit = 1000;
     }
 
-    public Player(int saldo)
+    public Player(int credit)
     {
-
+        this.credit = credit;
     }
 
     public int getCredit()
@@ -22,17 +22,17 @@ public class Player {
         return credit;
     }
 
-    public void setCredit(int saldo)
+    public void setCredit(int credit)
     {
 
     }
 
-    public int substractCredit(int saldo)
+    public int substractCredit(int credit)
     {
 
     }
 
-    public int addCredit(int saldo)
+    public int addCredit(int credit)
     {
         
     }

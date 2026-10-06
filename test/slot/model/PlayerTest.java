@@ -24,10 +24,16 @@ class PlayerTest {
     }
 
     @Test 
-    public void TestPlayer(int credit)
+    public void TestPlayerWithParameters()
     {
-        player = new Player(500);
-        assertEquals(player.getCredit(), 500);
+        player = new Player(1);
+        assertEquals(player.getCredit(), 1);
+
+        player = new Player(0);
+        assertEquals(player.getCredit(), 0);
+
+        player = new Player(-1);
+        assertEquals(player.getCredit(), 1000);
     }
 
     
