@@ -14,7 +14,10 @@ public class Player {
 
     public Player(int credit)
     {
-        this.credit = credit;
+        if(credit >= 0)
+            this.credit = credit;
+        else    
+            this.credit = 1000;
     }
 
     public int getCredit()
@@ -27,6 +30,7 @@ public class Player {
 
     }
 
+    /*
     public int substractCredit(int credit)
     {
 
@@ -36,6 +40,6 @@ public class Player {
     {
         
     }
-
+     */
 
 }
