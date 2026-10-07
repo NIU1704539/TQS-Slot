@@ -30,16 +30,16 @@ public class Player {
 
     }
 
-    /*
+    
     public int substractCredit(int credit)
     {
-
+        return 1;
     }
 
     public int addCredit(int credit)
     {
-        
+        return 1;
     }
-     */
+     
 
 }
