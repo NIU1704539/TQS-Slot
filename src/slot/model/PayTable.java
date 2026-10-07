@@ -1,5 +1,6 @@
 package slot.model;
-import java.util.Map;
+import java.util.EnumMap;
+
 
 /**
  * Relaciona cada {@link Symbol} con sus pesos (bonificaciones) mediante un Map&lt;Symbol, Double&gt;.
@@ -7,14 +8,17 @@ import java.util.Map;
  */
 
 class PayTable {
-    private Map<Symbol,Double> symbolWeights;
-    private Map<Symbol, float[]> symbolPayouts;
-
-
+    private EnumMap<Symbol,Double> symbolWeights;
+    private EnumMap<Symbol, float[]> symbolPayouts;
 
     public PayTable()
     {
 
+    }
+
+    public Double getWeights()
+    {
+        
     }
 
 
