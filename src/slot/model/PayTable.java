@@ -9,7 +9,7 @@ import java.util.EnumMap;
 
 class PayTable {
     private EnumMap<Symbol,Double> symbolWeights;
-    private EnumMap<Symbol, float[]> symbolPayouts;
+    private EnumMap<Symbol, int[]> symbolPayouts;
 
     public PayTable()
     {
@@ -31,6 +31,10 @@ class PayTable {
     {
         return symbolWeights.get(symbol);
     }
-
+    
+    public int getPayouts(Symbol symbol)
+    {
+        return 0;
+    }
 
 }
