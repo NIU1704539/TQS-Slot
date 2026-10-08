@@ -27,19 +27,26 @@ public class Player {
 
     public void setCredit(int credit)
     {
-
+        if(credit >= 0)
+            this.credit = credit;
     }
 
-    
     public int substractCredit(int credit)
     {
-        return 1;
+        if(credit < 0 || credit > this.credit)
+            return -1;
+
+        this.credit -= credit;
+        return this.credit;
     }
 
     public int addCredit(int credit)
     {
-        return 1;
+        if(credit < 0)
+            return -1;
+
+        this.credit += credit;
+        return this.credit;
     }
-     
 
 }
