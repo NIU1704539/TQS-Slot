@@ -16,7 +16,7 @@ class PayTable {
 
     }
 
-    public Double getWeights()
+    public Double getWeight(Symbol symbol)
     {
         
     }
