@@ -13,12 +13,23 @@ class PayTable {
 
     public PayTable()
     {
-
+        symbolWeights = new EnumMap<>(Symbol.class);
+        symbolWeights.put(Symbol.J, 0.15);
+        symbolWeights.put(Symbol.Q, 0.14);
+        symbolWeights.put(Symbol.K, 0.13);
+        symbolWeights.put(Symbol.A, 0.12);
+        symbolWeights.put(Symbol.CHERRY, 0.11);
+        symbolWeights.put(Symbol.LEMON, 0.10);
+        symbolWeights.put(Symbol.KIWI, 0.10);
+        symbolWeights.put(Symbol.BLUEBERRY, 0.08);
+        symbolWeights.put(Symbol.MELON, 0.05);
+        symbolWeights.put(Symbol.WILD, 0.02);
     }
+
 
     public Double getWeight(Symbol symbol)
     {
-        
+        return symbolWeights.get(symbol);
     }
 
 
