@@ -16,6 +16,27 @@ public class RNGTest {
     }
 
     @Test 
+    void getrandNumberTest()
+    {
+        double first = number.getrandNumber();
+        boolean differentValue = false;
+
+        for(int i=0; i < 200000;i++)
+        {
+            double value = number.getrandNumber();
+            assertTrue(value >= 0.0 && value <= 1.0, "Fuera del rango [0,1]: " + value);
+
+            if (value != first)
+            {
+                differentValue = true;
+            }
+        }
+
+        assertTrue(differentValue, "getrandNumber() siempre devuelve el mismo valor: " + first);
+    }
+
+
+    @Test 
     void RNGtoSymbolTest()
     {
         assertEquals(Symbol.J, number.RNGtoSymbol(0.0));
