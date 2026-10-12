@@ -16,11 +16,10 @@ public class LineWinTest
     }
 
     @Test
-    void setLineWinTest()
+    void LineWinTest()
     {
-        
-
+        assertEquals(6, test.getPayline());
+        assertEquals(Symbol.CHERRY, test.getSymbol());
+        assertEquals(3, test.getAmount());
     } 
-
-    
 }
