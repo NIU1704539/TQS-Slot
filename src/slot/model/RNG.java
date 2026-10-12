@@ -6,7 +6,7 @@ public class RNG {
 
     public RNG()
     {
-
+        randNumber = Math.random();
     }
 
     public double getrandNumber()

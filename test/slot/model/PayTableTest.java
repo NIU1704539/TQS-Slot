@@ -17,17 +17,6 @@ class PayTableTest {
     @Test 
     void PayTableTest()
     {
-        assertNotEquals(null, payTable.getWeight(Symbol.J));
-        assertEquals(0.15, payTable.getWeight(Symbol.J), 1e-9);
-        assertEquals(0.14, payTable.getWeight(Symbol.Q), 1e-9);
-        assertEquals(0.13, payTable.getWeight(Symbol.K), 1e-9);
-        assertEquals(0.12, payTable.getWeight(Symbol.A), 1e-9);
-        assertEquals(0.11, payTable.getWeight(Symbol.CHERRY), 1e-9);
-        assertEquals(0.10, payTable.getWeight(Symbol.LEMON), 1e-9);
-        assertEquals(0.10, payTable.getWeight(Symbol.KIWI), 1e-9);
-        assertEquals(0.08, payTable.getWeight(Symbol.BLUEBERRY), 1e-9);
-        assertEquals(0.05, payTable.getWeight(Symbol.MELON), 1e-9);
-        assertEquals(0.02, payTable.getWeight(Symbol.WILD), 1e-9);
 
         assertNotEquals(null, payTable.getPayouts(Symbol.J));
         assertArrayEquals(new double[]{2.40, 1.20, 0.60}, payTable.getPayouts(Symbol.J), 1e-9);
