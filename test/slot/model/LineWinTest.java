@@ -12,7 +12,15 @@ public class LineWinTest
     @BeforeEach 
     void setUp()
     {
-        test = new LineWin();
+        test = new LineWin(6,Symbol.CHERRY, 3);
     }
+
+    @Test
+    void setLineWinTest()
+    {
+        
+
+    } 
+
     
 }
