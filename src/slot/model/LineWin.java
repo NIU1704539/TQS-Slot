@@ -15,7 +15,17 @@ public class LineWin {
 
     }
 
-    public LineWin getLineWin()
+    public int getPayline()
+    {
+        
+    }
+
+    public int getAmount()
+    {
+
+    }
+
+    public Symbol getSymbol()
     {
         
     }

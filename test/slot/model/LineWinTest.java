@@ -14,6 +14,5 @@ public class LineWinTest
     {
         test = new LineWin();
     }
-
     
 }
