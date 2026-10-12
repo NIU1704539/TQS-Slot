@@ -11,7 +11,7 @@ public class RNG {
 
     public double getrandNumber()
     {
-        return 0.0;
+        return randNumber = Math.random();
     }
 
     public Symbol RNGtoSymbol(double number)
