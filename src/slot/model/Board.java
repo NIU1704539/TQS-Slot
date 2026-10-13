@@ -19,7 +19,7 @@ public class Board {
      */
     public Board()
     {
-
+        grid = new Symbol[ROWS][COLS];
     }
 
     /**
@@ -28,7 +28,9 @@ public class Board {
      */
     public Board(RNG rng)
     {
-
+        grid = new Symbol[ROWS][COLS];
+        this.rng = rng;
+        spin();
     }
 
     /**
@@ -36,7 +38,14 @@ public class Board {
      */
     public void spin()
     {
-
+        for (int i = 0; i < ROWS; i++) 
+        {
+            for (int j = 0; j < COLS; j++) 
+            {
+                double valorDouble = rng.getrandNumber();
+                grid[i][j] = rng.RNGtoSymbol(valorDouble);
+            }
+        }
     }
 
     /**
@@ -44,7 +53,10 @@ public class Board {
      */
     public Symbol getSymbol(int row, int col)
     {
+        assert(row >= 0 && row < ROWS) : "invalid row value";
+        assert(col >= 0 && col < COLS) :  "invalid col value";  
 
+        return grid[row][col]; 
     }
 
     /**
@@ -52,7 +64,7 @@ public class Board {
      */
     public Symbol[][] getGrid()
     {
-
+        return null;
     }
 
     /**
@@ -60,7 +72,7 @@ public class Board {
      */
     public Symbol[] getLineSymbols(int line)
     {
-
+        return null;
     }
 
     /**
@@ -69,7 +81,7 @@ public class Board {
      */
     public LineWin evaluateLine(Symbol[] symbols)
     {
-
+        return null;
     }
 
     /**
@@ -78,7 +90,7 @@ public class Board {
      */
     public List<LineWin> checkWins()
     {
-
+        return null;
     }
 
     /**
@@ -87,7 +99,7 @@ public class Board {
     @Override
     public String toString()
     {
-
+        return null;
     }
 
 }

@@ -19,6 +19,7 @@ class BoardTest {
         });
         grid = new Board(pseudoRNG);
 
+
         // fila 0
         assertEquals(Symbol.CHERRY, grid.getSymbol(0, 0));
         assertEquals(Symbol.CHERRY, grid.getSymbol(0, 1));
