@@ -16,6 +16,17 @@ public class LineWinTest
     }
 
     @Test
+    void LineWinInvalidTest()
+    {
+        assertThrows(AssertionError.class, () -> new LineWin(11, Symbol.CHERRY, 3));
+        assertThrows(AssertionError.class, () -> new LineWin(4, null, 3));
+        assertThrows(AssertionError.class, () -> new LineWin(4, Symbol.CHERRY, 7));
+
+        assertThrows(AssertionError.class, () -> new LineWin(-1, Symbol.CHERRY, 3));
+        assertThrows(AssertionError.class, () -> new LineWin(4, Symbol.CHERRY, -1));
+    }
+
+    @Test
     void LineWinTest()
     {
         assertEquals(6, test.getPayline());
