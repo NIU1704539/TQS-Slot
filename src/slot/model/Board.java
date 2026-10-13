@@ -1,5 +1,6 @@
 package slot.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,11 +16,27 @@ public class Board {
     public static final int COLS = 5;
 
     /**
+     * Las 10 paylines (resources/paylines.png). PAYLINES[line][col] es la fila que se usa en esa columna.
+     */
+    public static final int[][] PAYLINES = {
+        {0, 0, 0, 0, 0},
+        {1, 1, 1, 1, 1},
+        {2, 2, 2, 2, 2},
+        {0, 1, 2, 1, 0},
+        {2, 1, 0, 1, 2},
+        {1, 0, 0, 0, 1},
+        {1, 2, 2, 2, 1},
+        {0, 0, 1, 2, 2},
+        {2, 2, 1, 0, 0},
+        {1, 2, 1, 0, 1}
+    };
+
+    /**
      * Crea el tablero con un RNG real y genera una matriz inicial aleatoria.
      */
     public Board()
     {
-        grid = new Symbol[ROWS][COLS];
+        this(new RNG());
     }
 
     /**
@@ -64,24 +81,59 @@ public class Board {
      */
     public Symbol[][] getGrid()
     {
-        return null;
+        Symbol[][] copy = new Symbol[ROWS][];
+        for (int i = 0; i < ROWS; i++)
+        {
+            copy[i] = grid[i].clone();
+        }
+        return copy;
     }
 
     /**
-     * Devuelve los 5 símbolos que caen sobre la payline indicada (1-10), de izquierda a derecha.
+     * Devuelve los 5 símbolos que caen sobre la payline indicada (0-9), de izquierda a derecha.
      */
     public Symbol[] getLineSymbols(int line)
     {
-        return null;
+        assert(line >= 0 && line < PAYLINES.length) : "invalid payline value";
+
+        Symbol[] symbols = new Symbol[COLS];
+        for (int col = 0; col < COLS; col++)
+        {
+            symbols[col] = grid[PAYLINES[line][col]][col];
+        }
+        return symbols;
     }
 
     /**
-     * Cuenta los símbolos iguales consecutivos desde la izquierda (teniendo en cuenta WILD).
-     * Devuelve el símbolo y la cantidad si hay 3 o más; si no, indica que no hay premio.
+     * Cuenta los símbolos iguales consecutivos desde la izquierda en la payline indicada (0-9),
+     * teniendo en cuenta que WILD sustituye a cualquier símbolo.
+     * Devuelve un LineWin si hay 3 o más; si no, devuelve null.
      */
-    public LineWin evaluateLine(Symbol[] symbols)
+    public LineWin evaluateLine(int line)
     {
-        return null;
+        Symbol[] symbols = getLineSymbols(line);
+
+        // el símbolo de la línea es el primero que no es WILD (si todos son WILD, es WILD)
+        Symbol target = Symbol.WILD;
+        for (Symbol s : symbols)
+        {
+            if (s != Symbol.WILD)
+            {
+                target = s;
+                break;
+            }
+        }
+
+        int amount = 0;
+        while (amount < COLS && (symbols[amount] == target || symbols[amount] == Symbol.WILD))
+        {
+            amount++;
+        }
+
+        if (amount < 3)
+            return null;
+
+        return new LineWin(line, target, amount);
     }
 
     /**
@@ -90,7 +142,14 @@ public class Board {
      */
     public List<LineWin> checkWins()
     {
-        return null;
+        List<LineWin> wins = new ArrayList<>();
+        for (int line = 0; line < PAYLINES.length; line++)
+        {
+            LineWin win = evaluateLine(line);
+            if (win != null)
+                wins.add(win);
+        }
+        return wins;
     }
 
     /**
@@ -99,7 +158,18 @@ public class Board {
     @Override
     public String toString()
     {
-        return null;
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < ROWS; i++)
+        {
+            for (int j = 0; j < COLS; j++)
+            {
+                if (j > 0)
+                    sb.append(" | ");
+                sb.append(grid[i][j]);
+            }
+            sb.append("\n");
+        }
+        return sb.toString();
     }
 
 }
