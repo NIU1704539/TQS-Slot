@@ -89,6 +89,7 @@ class BoardTest {
             // primera tirada todo J, segunda tirada todo MELON
             values[i] = (i < Board.ROWS * Board.COLS) ? MockRNG.symbolToValue(J) : MockRNG.symbolToValue(MELON);
         }
+
         pseudoRNG = new MockRNG(values);
         board = new Board(pseudoRNG);
         assertEquals(J, board.getSymbol(0, 0));
@@ -241,6 +242,30 @@ class BoardTest {
         // WILD no salva una racha de 2 seguida de otro símbolo
         assertNull(boardWithTopRow(WILD, CHERRY, J, J, J).evaluateLine(0));
     }
+
+    @Test 
+    public void evaluateLineWithWildsExtended()
+    {
+        LineWin win = boardWithTopRow(CHERRY, CHERRY, WILD, J, Q).evaluateLine(0);
+        assertEquals(CHERRY, win.getSymbol());
+        assertEquals(3, win.getAmount());
+
+        win = boardWithTopRow(CHERRY, CHERRY, CHERRY, CHERRY, WILD).evaluateLine(0);
+        assertEquals(CHERRY, win.getSymbol());
+        assertEquals(5, win.getAmount());
+
+        win = boardWithTopRow(WILD, WILD, WILD, WILD, MELON).evaluateLine(0);
+        assertEquals(MELON, win.getSymbol());
+        assertEquals(5, win.getAmount());
+    }
+
+    @Test
+    public void evaluateLineWildAfterBrokenStreak()
+    {
+        assertNull(boardWithTopRow(CHERRY, J, WILD, WILD, WILD).evaluateLine(0));
+        assertNull(boardWithTopRow(CHERRY, CHERRY, J, WILD, WILD).evaluateLine(0));
+    }
+
 
     // ---------------------------------------------------------------- checkWins
 
