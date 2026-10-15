@@ -39,6 +39,10 @@ public class RNGTest {
     @Test 
     void RNGtoSymbolTest()
     {
+
+        assertThrows(AssertionError.class, ()-> number.RNGtoSymbol(-0.1));
+        assertThrows(AssertionError.class, ()-> number.RNGtoSymbol(1.01));
+
         assertEquals(Symbol.J, number.RNGtoSymbol(0.0));
         assertEquals(Symbol.J, number.RNGtoSymbol(0.14));
         assertEquals(Symbol.J, number.RNGtoSymbol(0.15));
