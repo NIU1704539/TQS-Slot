@@ -5,14 +5,14 @@ package slot.model;
  */
 public class Player {
 
-    private int credit;
+    private double credit;
 
     public Player()
     {
         credit = 1000;
     }
 
-    public Player(int credit)
+    public Player(double credit)
     {
         if(credit >= 0)
             this.credit = credit;
@@ -20,18 +20,18 @@ public class Player {
             this.credit = 1000;
     }
 
-    public int getCredit()
+    public double getCredit()
     {
         return credit;
     }
 
-    public void setCredit(int credit)
+    public void setCredit(double credit)
     {
         if(credit >= 0)
             this.credit = credit;
     }
 
-    public int substractCredit(int credit)
+    public double substractCredit(double credit)
     {
         if(credit < 0 || credit > this.credit)
             return -1;
@@ -40,7 +40,7 @@ public class Player {
         return this.credit;
     }
 
-    public int addCredit(int credit)
+    public double addCredit(double credit)
     {
         if(credit < 0)
             return -1;
