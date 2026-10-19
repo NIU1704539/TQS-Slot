@@ -11,11 +11,36 @@ import slot.model.PayTable;
  */
 public class Game 
 {
-    private Board board;
-    private Player Player;
-    private PayTable PayTable;
+    private Board gameboard;
+    private Player gamer;
+    private PayTable gamePayTable;
 
+    public Game()
+    {
+        gameboard = new Board();
+        gamer = new Player();
+        gamePayTable = new PayTable();
+    }
 
+    public Game(Board gameboard)
+    {
+
+    }
+
+    public Board getBoard()
+    {
+        return this.gameboard;
+    }
+
+    public Player getGamer()
+    {
+        return this.gamer;
+    }
+    
+    public PayTable getPayTable()
+    {
+        return this.gamePayTable;
+    }
 
 
 }

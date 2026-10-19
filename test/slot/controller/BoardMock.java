@@ -1,6 +1,6 @@
 package slot.controller;
 
-public class GameMock {
+public class BoardMock {
 
     
     
