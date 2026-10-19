@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 class GameTest {
 
     Game game;
+    BoardMock mockBoard;
 
     @BeforeEach 
     public void setUp()
@@ -18,9 +19,8 @@ class GameTest {
     @Test 
     public void parametredBoardContructor()
     {
-        game = new Game()
-
-
+        game = new Game(mockBoard);
+        assertEquals(game.getBoard(), mockBoard);
     }
 
 
