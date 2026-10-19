@@ -7,7 +7,7 @@ import java.util.EnumMap;
  * Se consulta únicamente para calcular el retorno del jugador en caso de victoria.
  */
 
-class PayTable {
+public class PayTable {
     private EnumMap<Symbol, double[]> symbolPayouts;
 
     public PayTable()
