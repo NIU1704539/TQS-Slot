@@ -21,11 +21,17 @@ class GameTest {
     public void parametredBoardContructor()
     {
         game = new Game(mockBoard);
-        
         assertNotNull(game.getGamer());
         assertNotNull(game.getPayTable());
         assertEquals(game.getBoard(), mockBoard);
     }
+
+    @Test 
+    public void gameFlow()
+    {
+
+    }
+
 
 
 

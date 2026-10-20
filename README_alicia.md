@@ -17,13 +17,24 @@ Player -> guarda los datos del usuario, como el saldo disponible junto con otra 
 Game -> controlador y núcleo funcional del sistema. Relaciona los datos de PayTable, Player y Board e interactua con el usario. gestiona el flujo del juego.
 
 
-Flujo del juego:
-    El jugador elige su apuesta (o sigue con la de antes) o decide retirarse (→ 9)
-    Se valida la apuesta (> 0 y dentro de los límites)
-    Se comprueba que saldo ≥ apuesta; si no, → 9 (o se le pide una apuesta menor)
-    Se descuenta la apuesta del saldo
-    Board hace el spin
-    Se evalúan las líneas (checkWins)
-    Se calcula el premio total con PayTable y se suma al saldo
-    Se muestra el resultado y se vuelve al 1
-    Fin de la partida
+### Flujo de una ronda
+1. El jugador elige la apuesta (o mantiene la anterior) o se retira.
+2. Se valida la apuesta (> 0 y dentro de los límites).
+3. Se comprueba que saldo ≥ apuesta; si no, termina la partida.
+4. Se descuenta la apuesta.
+5. `Board` hace el spin.
+6. Se evalúan las líneas (`checkWins`).
+7. Se calcula el premio con `PayTable` y se suma al saldo.
+8. Se muestra el resultado y se vuelve al paso 1.
+
+### Casos de prueba
+| Área | Casos |
+|---|---|
+| Constructores | Atributos inicializados; el `Board` recibido es el mismo objeto |
+| Validación de apuesta | Negativa, 0, mínimo, máximo y valores justo fuera de los límites |
+| Saldo insuficiente | No se juega la ronda, el saldo no cambia y no se hace spin |
+| Saldo exacto | Saldo == apuesta permite jugar |
+| Ronda sin premio | Saldo final = saldo − apuesta |
+| Cálculo del premio | Sin líneas → 0; líneas de 3, 4 y 5 símbolos; varias líneas se suman |
+| Ronda con premio | Saldo final = saldo − apuesta + premio |
+| Fin de partida | Por retirada del jugador o por saldo insuficiente |
