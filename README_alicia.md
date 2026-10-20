@@ -15,3 +15,15 @@ Board -> núcleo computacional del sistema. Clase encargada de la generación y 
 Player -> guarda los datos del usuario, como el saldo disponible junto con otra información que se desee guardar.
 
 Game -> controlador y núcleo funcional del sistema. Relaciona los datos de PayTable, Player y Board e interactua con el usario. gestiona el flujo del juego.
+
+
+Flujo del juego:
+    El jugador elige su apuesta (o sigue con la de antes) o decide retirarse (→ 9)
+    Se valida la apuesta (> 0 y dentro de los límites)
+    Se comprueba que saldo ≥ apuesta; si no, → 9 (o se le pide una apuesta menor)
+    Se descuenta la apuesta del saldo
+    Board hace el spin
+    Se evalúan las líneas (checkWins)
+    Se calcula el premio total con PayTable y se suma al saldo
+    Se muestra el resultado y se vuelve al 1
+    Fin de la partida
