@@ -24,7 +24,8 @@ public class Game
 
     public Game(Board gameboard)
     {
-
+        this.gamer = new Player();
+        this.gamePayTable = new PayTable();
         this.gameboard = gameboard;
     }
 
