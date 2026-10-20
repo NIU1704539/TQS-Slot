@@ -22,9 +22,8 @@ class GameTest {
     {
         game = new Game(mockBoard);
         
-        assertThrows(AssertionError.class,()-> game.getGamer());
-        assertThrows(AssertionError.class, ()-> game.getPayTable());
-        
+        assertNotNull(game.getGamer());
+        assertNotNull(game.getPayTable());
         assertEquals(game.getBoard(), mockBoard);
     }
 
