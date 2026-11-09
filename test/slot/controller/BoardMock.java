@@ -6,6 +6,9 @@ public class BoardMock extends Board {
 
     private Symbol grid[][];
 
+    // the explicit "= 0" resets the counter after super() (Board's constructor already calls spin())
+    private int numSpins = 0;
+
     public BoardMock(Symbol grid[][])
     {
         this.grid = new Symbol[ROWS][COLS];
@@ -18,7 +21,12 @@ public class BoardMock extends Board {
     @Override 
     public void spin()
     {
+        numSpins++;
+    }
 
+    public int getNumSpins()
+    {
+        return numSpins;
     }
 
     @Override 
