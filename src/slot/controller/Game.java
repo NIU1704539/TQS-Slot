@@ -17,6 +17,7 @@ public class Game
     private Board gameboard;
     private Player gamer;
     private PayTable gamePayTable;
+    private boolean gameOver = false;
 
     public static final double MIN_BET = 1;
     public static final double MAX_BET = 100;
@@ -55,7 +56,7 @@ public class Game
      */
     public boolean isValidBet(double bet)
     {
-        throw new UnsupportedOperationException("TODO");
+        return bet >= MIN_BET && bet <= MAX_BET;
     }
 
     /**
@@ -63,7 +64,7 @@ public class Game
      */
     public boolean hasEnoughCredit(double bet)
     {
-        throw new UnsupportedOperationException("TODO");
+        return gamer.getCredit() >= bet;
     }
 
     /**
@@ -72,7 +73,13 @@ public class Game
      */
     public double calculatePrize(List<LineWin> wins, double bet)
     {
-        throw new UnsupportedOperationException("TODO");
+        double prize = 0;
+        for (LineWin win : wins)
+        {
+            double[] payouts = gamePayTable.getPayouts(win.getSymbol());
+            prize += bet * payouts[Board.COLS - win.getAmount()];
+        }
+        return prize;
     }
 
     /**
@@ -83,7 +90,21 @@ public class Game
      */
     public double playRound(double bet)
     {
-        throw new UnsupportedOperationException("TODO");
+        if (gameOver || !isValidBet(bet))
+            return -1;
+
+        if (!hasEnoughCredit(bet))
+        {
+            gameOver = true;
+            return -1;
+        }
+
+        gamer.substractCredit(bet);
+        gameboard.spin();
+
+        double prize = calculatePrize(gameboard.checkWins(), bet);
+        gamer.addCredit(prize);
+        return prize;
     }
 
     /**
@@ -91,7 +112,7 @@ public class Game
      */
     public void retire()
     {
-        throw new UnsupportedOperationException("TODO");
+        gameOver = true;
     }
 
     /**
@@ -99,7 +120,7 @@ public class Game
      */
     public boolean isGameOver()
     {
-        throw new UnsupportedOperationException("TODO");
+        return gameOver;
     }
 
 }
